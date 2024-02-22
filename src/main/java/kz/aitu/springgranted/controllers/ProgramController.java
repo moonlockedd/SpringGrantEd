@@ -40,8 +40,8 @@ public class ProgramController {
         return new ResponseEntity<>(program, HttpStatus.CREATED);
     }
 
-    @GetMapping("/university/{universityId}")
-    public List<Program> getByUniversityId(@PathVariable int universityId) {
+    @GetMapping("/university/{university_id}")
+    public List<Program> getByUniversityId(@PathVariable("university_id") int universityId) {
         return service.getByUniversityId(universityId);
     }
 }

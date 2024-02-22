@@ -1,5 +1,6 @@
 package kz.aitu.springgranted.services;
 
+import kz.aitu.springgranted.models.Program;
 import kz.aitu.springgranted.models.University;
 import kz.aitu.springgranted.repositories.IUniversityRepository;
 import kz.aitu.springgranted.services.interfaces.IUniversityService;
@@ -22,6 +23,13 @@ public class UniversityService implements IUniversityService {
 
     @Override
     public University getById(int id) {
-        return null;
+        return repo.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Program> getAllPrograms(int universityId) {
+        University university = getById(universityId);
+
+        return university.getPrograms();
     }
 }
