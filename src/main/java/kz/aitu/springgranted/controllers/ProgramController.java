@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.annotation.Repeatable;
 import java.util.List;
 
 @RestController
@@ -39,5 +38,10 @@ public class ProgramController {
         if (createdProgram == null)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         return new ResponseEntity<>(program, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/university/{universityId}")
+    public List<Program> getByUniversityId(@PathVariable int universityId) {
+        return service.getByUniversityId(universityId);
     }
 }

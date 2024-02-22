@@ -31,7 +31,7 @@ public class ProgramService implements IProgramService {
     }
 
     @Override
-    public List<Program> getByUniversityId(int id) {
-        return ;
+    public List<Program> getByUniversityId(int universityId) {
+        return repo.findByUniversityId(universityId);
     }
 }

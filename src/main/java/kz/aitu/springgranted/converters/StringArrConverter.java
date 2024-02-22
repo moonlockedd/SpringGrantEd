@@ -2,11 +2,6 @@ package kz.aitu.springgranted.converters;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 @Converter
 public class StringArrConverter implements AttributeConverter<String[], String> {
     private static final String SEPARATOR = ";";
