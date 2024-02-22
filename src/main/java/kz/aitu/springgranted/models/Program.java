@@ -1,9 +1,8 @@
 package kz.aitu.springgranted.models;
 
 import jakarta.persistence.*;
+import kz.aitu.springgranted.converters.StringArrConverter;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @Entity
@@ -13,7 +12,9 @@ public class Program {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    @ElementCollection
-    private List<String> electives;
+    @Convert(converter = StringArrConverter.class)
+    private String[] electives;
     private int minimumScore;
+    @Column(name = "university_id")
+    private int universityId;
 }

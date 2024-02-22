@@ -27,11 +27,11 @@ public class ProgramService implements IProgramService {
 
     @Override
     public Program create(Program program) {
-        return null;
+        return repo.save(program);
     }
 
     @Override
     public List<Program> getByUniversityId(int id) {
-        return null;
+        return ;
     }
 }
