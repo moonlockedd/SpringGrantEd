@@ -38,7 +38,7 @@ public class SubjectScoreListConverter implements AttributeConverter<List<Subjec
             String[] separated = string.split(ATTRIBUTE_SEPARATOR);
 
             subjectScores.add(new SubjectScore(
-               separated[0], Integer.parseInt(separated[1])
+               separated[0], Integer.valueOf(separated[1])
             ));
         }
 

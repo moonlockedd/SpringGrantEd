@@ -29,9 +29,4 @@ public class ProgramService implements IProgramService {
     public Program create(Program program) {
         return repo.save(program);
     }
-
-    @Override
-    public List<Program> getByUniversityId(int universityId) {
-        return repo.findByUniversityId(universityId);
-    }
 }

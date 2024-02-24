@@ -33,10 +33,10 @@ public class UserController {
 
     @PostMapping("/")
     public ResponseEntity<User> create(@RequestBody User user) {
-        User createduser = service.create(user);
+        User createdUser = service.create(user);
 
-        if (createduser == null)
+        if (createdUser == null)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        return new ResponseEntity<>(createduser, HttpStatus.CREATED);
+        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 }

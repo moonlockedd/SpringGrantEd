@@ -39,9 +39,4 @@ public class ProgramController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         return new ResponseEntity<>(program, HttpStatus.CREATED);
     }
-
-    @GetMapping("/university/{university_id}")
-    public List<Program> getByUniversityId(@PathVariable("university_id") int universityId) {
-        return service.getByUniversityId(universityId);
-    }
 }

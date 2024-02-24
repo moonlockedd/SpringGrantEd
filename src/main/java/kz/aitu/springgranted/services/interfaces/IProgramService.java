@@ -8,5 +8,4 @@ public interface IProgramService {
     List<Program> getAll();
     Program getById(int id);
     Program create(Program program);
-    List<Program> getByUniversityId(int id);
 }
