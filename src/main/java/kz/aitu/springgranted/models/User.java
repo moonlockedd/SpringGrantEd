@@ -1,7 +1,6 @@
 package kz.aitu.springgranted.models;
 
 import jakarta.persistence.*;
-import kz.aitu.springgranted.converters.SubjectScoreListConverter;
 import lombok.Data;
 
 import java.util.List;
@@ -17,6 +16,7 @@ public class User {
     private String lastName;
     private String username;
     private String password;
-    @Convert(converter = SubjectScoreListConverter.class)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private List<SubjectScore> subjectScores;
 }

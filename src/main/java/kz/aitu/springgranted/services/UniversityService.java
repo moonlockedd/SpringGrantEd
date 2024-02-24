@@ -27,6 +27,11 @@ public class UniversityService implements IUniversityService {
     }
 
     @Override
+    public University create(University university) {
+        return repo.save(university);
+    }
+
+    @Override
     public List<Program> getAllPrograms(int universityId) {
         University university = getById(universityId);
 
