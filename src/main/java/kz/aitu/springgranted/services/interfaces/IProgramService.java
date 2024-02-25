@@ -7,5 +7,6 @@ import java.util.List;
 public interface IProgramService {
     List<Program> getAll();
     Program getById(int id);
+    List<Program> getByIds(List<Integer> ids);
     Program create(Program program);
 }

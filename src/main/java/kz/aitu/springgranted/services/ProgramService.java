@@ -26,6 +26,11 @@ public class ProgramService implements IProgramService {
     }
 
     @Override
+    public List<Program> getByIds(List<Integer> ids) {
+        return repo.findAllById(ids);
+    }
+
+    @Override
     public Program create(Program program) {
         return repo.save(program);
     }

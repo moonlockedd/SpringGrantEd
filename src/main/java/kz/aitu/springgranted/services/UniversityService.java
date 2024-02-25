@@ -2,6 +2,7 @@ package kz.aitu.springgranted.services;
 
 import kz.aitu.springgranted.models.Program;
 import kz.aitu.springgranted.models.University;
+import kz.aitu.springgranted.repositories.IProgramRepository;
 import kz.aitu.springgranted.repositories.IUniversityRepository;
 import kz.aitu.springgranted.services.interfaces.IUniversityService;
 import org.springframework.stereotype.Service;
@@ -10,31 +11,42 @@ import java.util.List;
 
 @Service
 public class UniversityService implements IUniversityService {
-    private final IUniversityRepository repo;
+    private final IUniversityRepository universityRepo;
+    private final IProgramRepository programRepo;
 
-    public UniversityService(IUniversityRepository repo) {
-        this.repo = repo;
+    public UniversityService(IUniversityRepository universityRepo, IProgramRepository programRepo) {
+        this.universityRepo = universityRepo;
+        this.programRepo = programRepo;
     }
 
     @Override
     public List<University> getAll() {
-        return repo.findAll();
+        return universityRepo.findAll();
     }
 
     @Override
     public University getById(int id) {
-        return repo.findById(id).orElse(null);
+        return universityRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Program> getProgramsInUni(int id) {
+        University university = universityRepo.findById(id).orElse(null);
+
+        if (university == null)
+            return null;
+        return programRepo.findAllById(university.getProgramIds());
     }
 
     @Override
     public University create(University university) {
-        return repo.save(university);
+        return universityRepo.save(university);
     }
 
     @Override
-    public List<Program> getAllPrograms(int universityId) {
-        University university = getById(universityId);
-
-        return university.getPrograms();
+    public void addProgramToUni(Program createdProgram, University university) {
+        int createdProgramId = createdProgram.getId();
+        university.getProgramIds().add(createdProgramId);
+        universityRepo.save(university);
     }
 }
