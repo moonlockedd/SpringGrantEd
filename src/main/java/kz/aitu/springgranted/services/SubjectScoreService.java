@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class SubjectScoreService implements ISubjectScoreService {
-    private ISubjectScoreRepository repo;
+    private final ISubjectScoreRepository repo;
 
     public SubjectScoreService(ISubjectScoreRepository repo) {
         this.repo = repo;

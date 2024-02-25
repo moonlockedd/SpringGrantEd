@@ -1,7 +1,5 @@
 package kz.aitu.springgranted.services;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import kz.aitu.springgranted.models.SubjectScore;
 import kz.aitu.springgranted.models.User;
 import kz.aitu.springgranted.repositories.ISubjectScoreRepository;
 import kz.aitu.springgranted.repositories.IUserRepository;
@@ -13,11 +11,9 @@ import java.util.List;
 @Service
 public class UserService implements IUserService {
     private final IUserRepository userRepo;
-    private final ISubjectScoreRepository subjectScoreRepo;
 
     public UserService(IUserRepository userRepo, ISubjectScoreRepository subjectScoreRepo) {
         this.userRepo = userRepo;
-        this.subjectScoreRepo = subjectScoreRepo;
     }
 
     @Override
