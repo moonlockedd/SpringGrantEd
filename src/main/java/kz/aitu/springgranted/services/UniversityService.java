@@ -30,15 +30,6 @@ public class UniversityService implements IUniversityService {
     }
 
     @Override
-    public List<Program> getProgramsInUni(int id) {
-        University university = universityRepo.findById(id).orElse(null);
-
-        if (university == null)
-            return null;
-        return programRepo.findAllById(university.getProgramIds());
-    }
-
-    @Override
     public University create(University university) {
         return universityRepo.save(university);
     }

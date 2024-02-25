@@ -12,7 +12,7 @@ import java.util.List;
 public class UserService implements IUserService {
     private final IUserRepository userRepo;
 
-    public UserService(IUserRepository userRepo, ISubjectScoreRepository subjectScoreRepo) {
+    public UserService(IUserRepository userRepo) {
         this.userRepo = userRepo;
     }
 
