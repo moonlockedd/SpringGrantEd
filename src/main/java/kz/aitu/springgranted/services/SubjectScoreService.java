@@ -21,6 +21,11 @@ public class SubjectScoreService implements ISubjectScoreService {
     }
 
     @Override
+    public List<SubjectScore> getByIds(List<Integer> ids) {
+        return repo.findAllById(ids);
+    }
+
+    @Override
     public SubjectScore create(SubjectScore subjectScore) {
         return repo.save(subjectScore);
     }

@@ -1,7 +1,6 @@
 package kz.aitu.springgranted.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
