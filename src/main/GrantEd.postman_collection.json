@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "119a20e3-e9be-4932-bb9a-87890811f07c",
+		"name": "GrantEd",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33144235"
+	},
+	"item": [
+		{
+			"name": "Program",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Smart Technologies\",\r\n    \"elective\": [1, 2],\r\n    \"minimumScore\": 70\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/programs/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"programs",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllPrograms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/programs/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"programs",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProgramById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/programs/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"programs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "University",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/universities/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"universities",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllUniversities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/universities/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"universities",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UniversityById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/universities/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"universities",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProgramsInUni",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/universities/1/programs",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"universities",
+						"1",
+						"programs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProgramToUni",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Electronic Engineering\",\r\n    \"electives\": [\r\n        \"Physics\",\r\n        \"Mathematics\"\r\n    ],\r\n    \"minimumScore\": 70\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/universities/1/add/program",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"universities",
+						"1",
+						"add",
+						"program"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"subjectScores\": [\r\n        1,\r\n        2,\r\n        3,\r\n        4,\r\n        5\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SubjectScoresOfUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users/1/scores",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"1",
+						"scores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllSubjectScores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/subjectscores/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"subjectscores",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SubjectScore",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/subjectscores/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"subjectscores",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
