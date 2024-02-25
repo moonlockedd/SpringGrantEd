@@ -1,7 +1,6 @@
 package kz.aitu.springgranted.services;
 
 import kz.aitu.springgranted.models.User;
-import kz.aitu.springgranted.repositories.ISubjectScoreRepository;
 import kz.aitu.springgranted.repositories.IUserRepository;
 import kz.aitu.springgranted.services.interfaces.IUserService;
 import org.springframework.stereotype.Service;
