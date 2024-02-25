@@ -13,6 +13,4 @@ public class SubjectScore {
     private int id;
     private String subject;
     private int score;
-    @Column(name = "user_id")
-    private int userId;
 }

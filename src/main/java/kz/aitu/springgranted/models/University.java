@@ -13,7 +13,5 @@ public class University {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "university_id")
-    List<Program> programs;
+    private List<Integer> programIds;
 }

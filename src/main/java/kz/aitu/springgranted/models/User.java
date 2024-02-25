@@ -14,9 +14,5 @@ public class User {
     private int id;
     private String firstName;
     private String lastName;
-    private String username;
-    private String password;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private List<SubjectScore> subjectScores;
+    private List<Integer> subjectScoreIds;
 }
