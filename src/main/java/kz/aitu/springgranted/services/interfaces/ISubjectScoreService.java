@@ -9,4 +9,5 @@ public interface ISubjectScoreService {
     List<SubjectScore> getByIds(List<Integer> ids);
     int getTotalScore(List<SubjectScore> subjectScores);
     SubjectScore create(SubjectScore subjectScore);
+    List<SubjectScore> createAll(List<SubjectScore> subjectScores);
 }

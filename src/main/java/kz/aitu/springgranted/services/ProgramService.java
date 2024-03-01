@@ -34,4 +34,9 @@ public class ProgramService implements IProgramService {
     public Program create(Program program) {
         return repo.save(program);
     }
+
+    @Override
+    public List<Program> createAll(List<Program> programs) {
+        return repo.saveAll(programs);
+    }
 }

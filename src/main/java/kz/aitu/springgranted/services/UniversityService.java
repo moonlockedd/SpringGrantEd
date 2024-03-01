@@ -32,8 +32,17 @@ public class UniversityService implements IUniversityService {
     }
 
     @Override
-    public void addProgramToUni(Program createdProgram, University university) {
+    public void addProgramToUniversity(Program createdProgram, University university) {
         university.getProgramIds().add(createdProgram.getId());
+
+        universityRepo.save(university);
+    }
+
+    @Override
+    public void addProgramsToUniversity(List<Program> createdPrograms, University university) {
+        for (Program createdProgram : createdPrograms) {
+            university.getProgramIds().add(createdProgram.getId());
+        }
 
         universityRepo.save(university);
     }

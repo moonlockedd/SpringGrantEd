@@ -107,16 +107,7 @@ public class UserController {
         if (user.getSubjectScoreIds().size() + subjectScores.size() > 5)
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 
-        List<SubjectScore> createdSubjectScores = new ArrayList<>();
-
-        for (SubjectScore subjectScore : subjectScores) {
-            SubjectScore createdSubjectScore = subjectScoreService.create(subjectScore);
-
-            if (createdSubjectScore == null)
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-
-            createdSubjectScores.add(createdSubjectScore);
-        }
+        List<SubjectScore> createdSubjectScores = subjectScoreService.createAll(subjectScores);
 
         userService.addSubjectScoresToUser(createdSubjectScores, user);
 

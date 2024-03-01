@@ -39,4 +39,9 @@ public class SubjectScoreService implements ISubjectScoreService {
     public SubjectScore create(SubjectScore subjectScore) {
         return repo.save(subjectScore);
     }
+
+    @Override
+    public List<SubjectScore> createAll(List<SubjectScore> subjectScores) {
+        return repo.saveAll(subjectScores);
+    }
 }

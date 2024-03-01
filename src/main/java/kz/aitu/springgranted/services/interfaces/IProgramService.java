@@ -9,4 +9,5 @@ public interface IProgramService {
     Program getById(int id);
     List<Program> getByIds(List<Integer> ids);
     Program create(Program program);
+    List<Program> createAll(List<Program> programs);
 }

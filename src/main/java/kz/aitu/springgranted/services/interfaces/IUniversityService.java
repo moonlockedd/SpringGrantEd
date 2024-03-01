@@ -9,5 +9,6 @@ public interface IUniversityService {
     List<University> getAll();
     University getById(int id);
     University create(University university);
-    void addProgramToUni(Program createdProgram, University university);
+    void addProgramToUniversity(Program createdProgram, University university);
+    void addProgramsToUniversity(List<Program> createdPrograms, University university);
 }
