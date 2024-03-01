@@ -382,6 +382,25 @@
 			"response": []
 		},
 		{
+			"name": "SubjectScoreById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/subjectscores/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"subjectscores",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "SubjectScore",
 			"request": {
 				"method": "POST",
@@ -395,6 +414,25 @@
 					"path": [
 						"subjectscores",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SubjectScoreById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/subjectscores/6",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"subjectscores",
+						"6"
 					]
 				}
 			},

@@ -29,17 +29,23 @@ public class UniversityController {
 
         if (university == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
         return new ResponseEntity<>(university, HttpStatus.OK);
     }
 
     @GetMapping("{university_id}/programs")
-    public ResponseEntity<List<Program>> getProgramsInUni(@PathVariable("university_id") int id) {
+    public ResponseEntity<List<Program>> getProgramsInUniversity(
+            @PathVariable("university_id") int id
+    ) {
         University university = universityService.getById(id);
+
         if (university == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         List<Integer> programIds = university.getProgramIds();
+        // Get programs in the university
         List<Program> programs = programService.getByIds(programIds);
+
         return new ResponseEntity<>(programs, HttpStatus.OK);
     }
 
@@ -49,6 +55,7 @@ public class UniversityController {
 
         if (university == null)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
         return new ResponseEntity<>(createdUniversity, HttpStatus.CREATED);
     }
 

@@ -49,4 +49,9 @@ public class SubjectScoreService implements ISubjectScoreService {
     public List<SubjectScore> createAll(List<SubjectScore> subjectScores) {
         return repo.saveAll(subjectScores);
     }
+
+    @Override
+    public void deleteById(int id) {
+        repo.deleteById(id);
+    }
 }

@@ -34,9 +34,13 @@ public class ProgramService implements IProgramService {
 
     @Override
     public List<Program> getProgramsForUser(String[] userElectiveNames, int userTotalScore) {
+        // List to store filtered programs
         List<Program> programs = new ArrayList<>();
 
+        // Filter programs
         for (Program program : repo.findAll()) {
+            // Check if array of elective names match and total score is
+            // higher or equal to minimum passing score
             if (Arrays.equals(
                     program.getElectives(),userElectiveNames
             ) && program.getMinimumScore() <= userTotalScore)

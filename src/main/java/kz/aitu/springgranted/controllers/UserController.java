@@ -33,6 +33,7 @@ public class UserController {
 
         if (user == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
@@ -44,6 +45,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         List<Integer> subjectScoreIds = user.getSubjectScoreIds();
+        // Get all subject scores that belong to user
         List<SubjectScore> subjectScores = subjectScoreService.getByIds(subjectScoreIds);
 
         return new ResponseEntity<>(subjectScores, HttpStatus.OK);
@@ -56,6 +58,7 @@ public class UserController {
         if (user == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
+        // Get all subject scores that belong to user
         List<SubjectScore> subjectScores = subjectScoreService.getByIds(user.getSubjectScoreIds());
         int totalScore = subjectScoreService.getTotalScore(subjectScores);
 
@@ -69,16 +72,21 @@ public class UserController {
         if (user == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
+        // Check if number of subject scores is valid
         if (user.getSubjectScoreIds().size() != 5)
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 
+        // Get all subject scores that belong to user
         List<SubjectScore> subjectScores = subjectScoreService.getByIds(user.getSubjectScoreIds());
 
+        // String array for elective subject names
         String[] userElectiveNames = new String[]{
                 subjectScores.get(3).getSubject(),
                 subjectScores.get(4).getSubject()
         };
+        // To have the same array regardless of how user orders strings
         Arrays.sort(userElectiveNames);
+
         int totalScore = subjectScoreService.getTotalScore(subjectScores);
 
         return new ResponseEntity<>(
@@ -93,6 +101,7 @@ public class UserController {
 
         if (createdUser == null)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
@@ -106,6 +115,7 @@ public class UserController {
         if (user == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
+        // Check if possible to add subject score
         if (user.getSubjectScoreIds().size() + 1 > 5)
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 
@@ -129,6 +139,7 @@ public class UserController {
         if (user == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
+        // Check if possible to add subject scores
         if (user.getSubjectScoreIds().size() + subjectScores.size() > 5)
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 

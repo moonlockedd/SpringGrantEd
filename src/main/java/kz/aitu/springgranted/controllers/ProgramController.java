@@ -27,16 +27,19 @@ public class ProgramController {
 
         if (program == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
         return new ResponseEntity<>(program, HttpStatus.OK);
     }
 
     @PostMapping("/")
     public ResponseEntity<Program> create(@RequestBody Program program) {
+        // To have the same array regardless of how user orders strings
         Arrays.sort(program.getElectives());
         Program createdProgram = service.create(program);
 
         if (createdProgram == null)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
         return new ResponseEntity<>(program, HttpStatus.CREATED);
     }
 }
