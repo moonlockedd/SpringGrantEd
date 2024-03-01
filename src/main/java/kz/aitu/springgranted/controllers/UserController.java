@@ -35,7 +35,7 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @GetMapping("{user_id}/scores")
+    @GetMapping("{user_id}/subjectscores")
     public ResponseEntity<List<SubjectScore>> getSubjectScoresOfUser(@PathVariable("user_id") int id) {
         User user = userService.getById(id);
 
@@ -68,5 +68,28 @@ public class UserController {
         if (createdUser == null)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{user_id}/add/subjectscore")
+    public ResponseEntity<User> addSubjectScoreToUser(
+            @RequestBody SubjectScore subjectScore,
+            @PathVariable("user_id") int id
+    ) {
+        User user = userService.getById(id);
+
+        if (user == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        if (user.getSubjectScoreIds().size() + 1 > 5)
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+
+        SubjectScore createdSubjectScore = subjectScoreService.create(subjectScore);
+
+        if (createdSubjectScore == null)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
+        userService.addSubjectScoreToUser(createdSubjectScore, user);
+
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 }

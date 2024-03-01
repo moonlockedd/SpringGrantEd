@@ -1,5 +1,6 @@
 package kz.aitu.springgranted.services;
 
+import kz.aitu.springgranted.models.SubjectScore;
 import kz.aitu.springgranted.models.User;
 import kz.aitu.springgranted.repositories.IUserRepository;
 import kz.aitu.springgranted.services.interfaces.IUserService;
@@ -28,5 +29,12 @@ public class UserService implements IUserService {
     @Override
     public User create(User user) {
         return userRepo.save(user);
+    }
+
+    @Override
+    public void addSubjectScoreToUser(SubjectScore createdSubjectScore, User user) {
+        user.getSubjectScoreIds().add(createdSubjectScore.getId());
+
+        userRepo.save(user);
     }
 }

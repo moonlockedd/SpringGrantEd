@@ -275,6 +275,44 @@
 			"response": []
 		},
 		{
+			"name": "TotalScoreOfUser",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "SubjectScoreToUser",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users/2/add/subjectscore",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"2",
+						"add",
+						"subjectscore"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "AllSubjectScores",
 			"request": {
 				"method": "GET",

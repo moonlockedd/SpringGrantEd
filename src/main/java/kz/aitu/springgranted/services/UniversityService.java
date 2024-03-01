@@ -33,8 +33,8 @@ public class UniversityService implements IUniversityService {
 
     @Override
     public void addProgramToUni(Program createdProgram, University university) {
-        int createdProgramId = createdProgram.getId();
-        university.getProgramIds().add(createdProgramId);
+        university.getProgramIds().add(createdProgram.getId());
+
         universityRepo.save(university);
     }
 }
