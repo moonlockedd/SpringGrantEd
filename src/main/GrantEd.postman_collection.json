@@ -189,6 +189,27 @@
 			"response": []
 		},
 		{
+			"name": "ProgramsToUni",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/universities/2/add/programs",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"universities",
+						"2",
+						"add",
+						"programs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "User",
 			"request": {
 				"method": "POST",

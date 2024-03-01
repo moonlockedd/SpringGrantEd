@@ -26,7 +26,7 @@ public class UniversityController {
         return universityService.getAll();
     }
 
-    @GetMapping("/{university_id}")
+    @GetMapping("{university_id}")
     public ResponseEntity<University> getById(@PathVariable("university_id") int id) {
         University university = universityService.getById(id);
 
@@ -35,7 +35,7 @@ public class UniversityController {
         return new ResponseEntity<>(university, HttpStatus.OK);
     }
 
-    @GetMapping("/{university_id}/programs")
+    @GetMapping("{university_id}/programs")
     public ResponseEntity<List<Program>> getProgramsInUni(@PathVariable("university_id") int id) {
         University university = universityService.getById(id);
         if (university == null)
@@ -55,18 +55,40 @@ public class UniversityController {
         return new ResponseEntity<>(createdUniversity, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{university_id}/add/program")
-    public ResponseEntity<University> addProgramToUni(
+    @PutMapping("{university_id}/add/program")
+    public ResponseEntity<University> addProgramToUniversity(
             @RequestBody Program program,
-            @PathVariable("university_id") int id) {
+            @PathVariable("university_id") int id
+    ) {
         University university = universityService.getById(id);
+
         if (university == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         Program createdProgram = programService.create(program);
+
         if (createdProgram == null)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        universityService.addProgramToUni(createdProgram, university);
+
+        universityService.addProgramToUniversity(createdProgram, university);
+
+        return new ResponseEntity<>(university, HttpStatus.CREATED);
+    }
+
+    @PutMapping("{university_id}/add/programs")
+    public ResponseEntity<University> addProgramsToUniversity(
+            @RequestBody List<Program> programs,
+            @PathVariable("university_id") int id
+    ) {
+        University university = universityService.getById(id);
+
+        if (university == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        List<Program> createdPrograms = programService.createAll(programs);
+
+        universityService.addProgramsToUniversity(createdPrograms, university);
+
         return new ResponseEntity<>(university, HttpStatus.CREATED);
     }
 }
