@@ -42,4 +42,17 @@ public class ProgramController {
 
         return new ResponseEntity<>(program, HttpStatus.CREATED);
     }
+    @DeleteMapping("{program_id}")
+    public ResponseEntity<Program> deleteById(
+            @PathVariable("program_id") int id
+    ) {
+        Program program = service.getById(id);
+
+        if (program == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        service.deleteById(id);
+
+        return new ResponseEntity<>(program, HttpStatus.OK);
+    }
 }
