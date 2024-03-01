@@ -313,6 +313,27 @@
 			"response": []
 		},
 		{
+			"name": "SubjectScoresToUser",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users/6/add/subjectscores",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"6",
+						"add",
+						"subjectscores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "AllSubjectScores",
 			"request": {
 				"method": "GET",

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -70,7 +71,7 @@ public class UserController {
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{user_id}/add/subjectscore")
+    @PutMapping("{user_id}/add/subjectscore")
     public ResponseEntity<User> addSubjectScoreToUser(
             @RequestBody SubjectScore subjectScore,
             @PathVariable("user_id") int id
@@ -89,6 +90,35 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
         userService.addSubjectScoreToUser(createdSubjectScore, user);
+
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
+    }
+
+    @PutMapping("{user_id}/add/subjectscores")
+    public ResponseEntity<User> addSubjectScoresToUser(
+            @RequestBody List<SubjectScore> subjectScores,
+            @PathVariable("user_id") int id
+    ) {
+        User user = userService.getById(id);
+
+        if (user == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        if (user.getSubjectScoreIds().size() + subjectScores.size() > 5)
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+
+        List<SubjectScore> createdSubjectScores = new ArrayList<>();
+
+        for (SubjectScore subjectScore : subjectScores) {
+            SubjectScore createdSubjectScore = subjectScoreService.create(subjectScore);
+
+            if (createdSubjectScore == null)
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
+            createdSubjectScores.add(createdSubjectScore);
+        }
+
+        userService.addSubjectScoresToUser(createdSubjectScores, user);
 
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }

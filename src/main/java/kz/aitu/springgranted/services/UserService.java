@@ -37,4 +37,13 @@ public class UserService implements IUserService {
 
         userRepo.save(user);
     }
+
+    @Override
+    public void addSubjectScoresToUser(List<SubjectScore> createdSubjectScores, User user) {
+        for (SubjectScore createdSubjectScore : createdSubjectScores) {
+            user.getSubjectScoreIds().add(createdSubjectScore.getId());
+        }
+
+        userRepo.save(user);
+    }
 }
