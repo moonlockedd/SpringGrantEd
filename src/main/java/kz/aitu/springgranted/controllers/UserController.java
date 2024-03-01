@@ -1,5 +1,6 @@
 package kz.aitu.springgranted.controllers;
 
+import kz.aitu.springgranted.models.Program;
 import kz.aitu.springgranted.models.SubjectScore;
 import kz.aitu.springgranted.models.User;
 import kz.aitu.springgranted.services.interfaces.IProgramService;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @AllArgsConstructor
@@ -58,6 +60,31 @@ public class UserController {
         int totalScore = subjectScoreService.getTotalScore(subjectScores);
 
         return new ResponseEntity<>(totalScore, HttpStatus.OK);
+    }
+
+    @GetMapping("{user_id}/availableprograms")
+    public ResponseEntity<List<Program>> getProgramsForUser(@PathVariable("user_id") int id) {
+        User user = userService.getById(id);
+
+        if (user == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        if (user.getSubjectScoreIds().size() != 5)
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+
+        List<SubjectScore> subjectScores = subjectScoreService.getByIds(user.getSubjectScoreIds());
+
+        String[] userElectiveNames = new String[]{
+                subjectScores.get(3).getSubject(),
+                subjectScores.get(4).getSubject()
+        };
+        Arrays.sort(userElectiveNames);
+        int totalScore = subjectScoreService.getTotalScore(subjectScores);
+
+        return new ResponseEntity<>(
+                programService.getProgramsForUser(userElectiveNames, totalScore),
+                HttpStatus.OK
+        );
     }
 
     @PostMapping("/")

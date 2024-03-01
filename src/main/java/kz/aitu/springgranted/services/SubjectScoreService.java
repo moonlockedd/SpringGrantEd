@@ -16,6 +16,11 @@ public class SubjectScoreService implements ISubjectScoreService {
     }
 
     @Override
+    public SubjectScore getById(int id) {
+        return repo.findById(id).orElse(null);
+    }
+
+    @Override
     public List<SubjectScore> getAll() {
         return repo.findAll();
     }

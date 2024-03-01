@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @AllArgsConstructor
@@ -31,6 +32,7 @@ public class ProgramController {
 
     @PostMapping("/")
     public ResponseEntity<Program> create(@RequestBody Program program) {
+        Arrays.sort(program.getElectives());
         Program createdProgram = service.create(program);
 
         if (createdProgram == null)

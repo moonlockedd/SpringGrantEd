@@ -304,6 +304,14 @@
 			"response": []
 		},
 		{
+			"name": "AvailablePrograms",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
 			"name": "SubjectScoreToUser",
 			"request": {
 				"method": "PUT",
