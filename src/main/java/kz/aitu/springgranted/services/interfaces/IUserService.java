@@ -11,4 +11,5 @@ public interface IUserService {
     User create(User user);
     void addSubjectScoreToUser(SubjectScore createdSubjectScore, User user);
     void addSubjectScoresToUser(List<SubjectScore> createdSubjectScores, User user);
+    void deleteById(int id);
 }

@@ -54,4 +54,9 @@ public class SubjectScoreService implements ISubjectScoreService {
     public void deleteById(int id) {
         repo.deleteById(id);
     }
+
+    @Override
+    public void deleteAllByIds(List<Integer> ids) {
+        repo.deleteAllById(ids);
+    }
 }

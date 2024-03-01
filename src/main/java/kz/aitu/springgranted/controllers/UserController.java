@@ -149,4 +149,19 @@ public class UserController {
 
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
+
+    @DeleteMapping("{user_id}")
+    public ResponseEntity<User> deleteById(@PathVariable("user_id") int id) {
+        User user = userService.getById(id);
+
+        if (user == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        // Delete all subject scores that belong to user
+        subjectScoreService.deleteAllByIds(user.getSubjectScoreIds());
+
+        userService.deleteById(id);
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 }

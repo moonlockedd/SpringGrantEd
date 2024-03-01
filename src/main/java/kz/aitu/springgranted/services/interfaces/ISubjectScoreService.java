@@ -12,4 +12,5 @@ public interface ISubjectScoreService {
     SubjectScore create(SubjectScore subjectScore);
     List<SubjectScore> createAll(List<SubjectScore> subjectScores);
     void deleteById(int id);
+    void deleteAllByIds(List<Integer> ids);
 }

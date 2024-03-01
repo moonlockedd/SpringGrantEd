@@ -46,4 +46,9 @@ public class UserService implements IUserService {
 
         userRepo.save(user);
     }
+
+    @Override
+    public void deleteById(int id) {
+        userRepo.deleteById(id);
+    }
 }
