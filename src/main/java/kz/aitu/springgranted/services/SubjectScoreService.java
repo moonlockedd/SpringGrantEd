@@ -26,6 +26,16 @@ public class SubjectScoreService implements ISubjectScoreService {
     }
 
     @Override
+    public int getTotalScore(List<SubjectScore> subjectScores) {
+        int totalScore = 0;
+
+        for (SubjectScore subjectScore : subjectScores)
+            totalScore += subjectScore.getScore();
+
+        return totalScore;
+    }
+
+    @Override
     public SubjectScore create(SubjectScore subjectScore) {
         return repo.save(subjectScore);
     }

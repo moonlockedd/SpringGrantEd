@@ -48,6 +48,19 @@ public class UserController {
         return new ResponseEntity<>(subjectScores, HttpStatus.OK);
     }
 
+    @GetMapping("{user_id}/totalscore")
+    public ResponseEntity<Integer> getTotalScoreOfUser(@PathVariable("user_id") int id) {
+        User user = userService.getById(id);
+
+        if (user == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        List<SubjectScore> subjectScores = subjectScoreService.getByIds(user.getSubjectScoreIds());
+        int totalScore = subjectScoreService.getTotalScore(subjectScores);
+
+        return new ResponseEntity<>(totalScore, HttpStatus.OK);
+    }
+
     @PostMapping("/")
     public ResponseEntity<User> create(@RequestBody User user) {
         User createdUser = userService.create(user);

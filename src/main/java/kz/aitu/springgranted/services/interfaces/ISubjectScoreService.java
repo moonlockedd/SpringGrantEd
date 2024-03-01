@@ -7,5 +7,6 @@ import java.util.List;
 public interface ISubjectScoreService {
     List<SubjectScore> getAll();
     List<SubjectScore> getByIds(List<Integer> ids);
+    int getTotalScore(List<SubjectScore> subjectScores);
     SubjectScore create(SubjectScore subjectScore);
 }
