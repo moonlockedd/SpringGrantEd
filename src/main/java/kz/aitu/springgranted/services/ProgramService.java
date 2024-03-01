@@ -64,4 +64,9 @@ public class ProgramService implements IProgramService {
     public void deleteById(int id) {
         repo.deleteById(id);
     }
+
+    @Override
+    public void deleteByIds(List<Integer> ids) {
+        repo.deleteAllById(ids);
+    }
 }

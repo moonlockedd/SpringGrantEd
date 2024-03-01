@@ -46,4 +46,9 @@ public class UniversityService implements IUniversityService {
 
         universityRepo.save(university);
     }
+
+    @Override
+    public void deleteById(int id) {
+        universityRepo.deleteById(id);
+    }
 }

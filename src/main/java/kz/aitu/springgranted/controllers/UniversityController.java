@@ -95,4 +95,21 @@ public class UniversityController {
 
         return new ResponseEntity<>(university, HttpStatus.CREATED);
     }
+
+    @DeleteMapping("{university_id}")
+    public ResponseEntity<University> deleteById(
+            @PathVariable("university_id") int id
+    ) {
+        University university = universityService.getById(id);
+
+        if (university == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        // Delete all programs in university
+        programService.deleteByIds(university.getProgramIds());
+
+        universityService.deleteById(id);
+
+        return new ResponseEntity<>(university, HttpStatus.OK);
+    }
 }

@@ -73,6 +73,25 @@
 			"response": []
 		},
 		{
+			"name": "ProgramById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/programs/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"programs",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "University",
 			"request": {
 				"method": "POST",
@@ -204,6 +223,25 @@
 						"2",
 						"add",
 						"programs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UniversityById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/universities/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"universities",
+						"2"
 					]
 				}
 			},
@@ -357,6 +395,25 @@
 						"6",
 						"add",
 						"subjectscores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"3"
 					]
 				}
 			},

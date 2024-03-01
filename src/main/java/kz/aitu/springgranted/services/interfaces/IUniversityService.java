@@ -11,4 +11,5 @@ public interface IUniversityService {
     University create(University university);
     void addProgramToUniversity(Program createdProgram, University university);
     void addProgramsToUniversity(List<Program> createdPrograms, University university);
+    void deleteById(int id);
 }

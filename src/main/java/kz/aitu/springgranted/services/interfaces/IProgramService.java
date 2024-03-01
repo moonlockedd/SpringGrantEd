@@ -12,4 +12,5 @@ public interface IProgramService {
     Program create(Program program);
     List<Program> createAll(List<Program> programs);
     void deleteById(int id);
+    void deleteByIds(List<Integer> ids);
 }
