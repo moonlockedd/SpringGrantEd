@@ -2,20 +2,18 @@ package kz.aitu.springgranted.controllers;
 
 import kz.aitu.springgranted.models.SubjectScore;
 import kz.aitu.springgranted.services.interfaces.ISubjectScoreService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("subjectscores")
 public class SubjectScoreController {
     private final ISubjectScoreService service;
-
-    public SubjectScoreController(ISubjectScoreService service) {
-        this.service = service;
-    }
 
     @GetMapping("/")
     public List<SubjectScore> getAll() {

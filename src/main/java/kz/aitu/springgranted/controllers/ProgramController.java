@@ -2,20 +2,18 @@ package kz.aitu.springgranted.controllers;
 
 import kz.aitu.springgranted.models.Program;
 import kz.aitu.springgranted.services.interfaces.IProgramService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("programs")
 public class ProgramController {
     private final IProgramService service;
-
-    public ProgramController(IProgramService service) {
-        this.service = service;
-    }
 
     @GetMapping("/")
     public List<Program> getAll() {

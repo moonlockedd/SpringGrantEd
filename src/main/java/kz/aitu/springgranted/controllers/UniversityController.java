@@ -4,22 +4,19 @@ import kz.aitu.springgranted.models.Program;
 import kz.aitu.springgranted.models.University;
 import kz.aitu.springgranted.services.interfaces.IProgramService;
 import kz.aitu.springgranted.services.interfaces.IUniversityService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("universities")
 public class UniversityController {
     private final IUniversityService universityService;
     private final IProgramService programService;
-
-    public UniversityController(IUniversityService universityService, IProgramService programService) {
-        this.universityService = universityService;
-        this.programService = programService;
-    }
 
     @GetMapping("/")
     public List<University> getAll() {
